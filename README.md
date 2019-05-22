@@ -301,6 +301,17 @@ We'll take them one at a time.
   addresses_ are the same to determine equality, or if the _tuple contents_ are
   the same.  For this assignment, we'll take the somewhat simpler route and
   compare _addresses_ of tuples, so the second test should evaluate to `false`.
+
+  This also means that `==` should not throw an error when called with non-integer values:
+
+  ```
+  true == 1                  is False
+  false == false             is True
+  (1,2) == 1                 is False
+  (1,2) == true              is False
+  let t = (1,2) in t == t    is True
+  ```
+
   (If you have extra time on this assignment, it's worth trying out the
   alternate implementation, where you check the tuple contents.  A useful hint
   is to write a two-argument function `equal` in `main.c` that handles this.
